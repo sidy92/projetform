@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Formulaire</title>
+    </head>
+    
+    <body>
+
+        <h1 style="font-family: inherit;"><center>Formulaire d'inscription</center></h1>
+
+        <p>
+            Bienvenue...
+        </p>
+
+        <form id="myform"; action="_validation_formulaire.php" method="post">
+            <fieldset style="border-color: rgb(209, 215, 248);">
+                <legend style="color: rgb(140, 156, 248);font-size: x-large;">
+                    <strong>Informations personnelles</strong>
+                </legend>
+                <p1>
+                    <p>
+                        Genre :<input type="radio" name="genre" id="1" value="1" />
+                        <label for="1">Monsieur</label>
+                        <input type="radio" name="genre" id="2" value="2" checked/>
+                        <label for="2">Madame</label>
+                    </p>
+                    <p>
+                        <label for="nom">Votre nom :</label>
+                        <input type="name" name="nom" id="mon_nom" placeholder="Miguez" required/>
+                    </p>
+                    <p>
+                        <label for="prenom">Votre prénom :</label>
+                        <input type="name" name="prenom" id="mon_prenom" placeholder="Raul" required/>
+                    </p>
+                    <p>
+                        <label for="date_naissance">Votre date de naissance :</label>
+                        <input type="date" name="date_naissance" id="date_naissance" placeholder="JJ/MM/AAAA"/>
+                    </p>
+                    <p>
+                        <label for="ville">Ville :</label>
+                        <input type="texte" name="ville" id="ville" placeholder="Saint-Denis" />
+                    </p>
+                    <p>
+                        <label for="adresse_postal">Code postal :</label>
+                        <input type="number" name="cpostal" id="adresse_postal" min="00001" max="99999" value="cpostal" placeholder="93000" />
+                    </p>
+                    <p>
+                        <label for="adresse">Adresse :</label>
+                        <input type="texte" name="adresse" id="adresse" placeholder="12 rue des pommes" />
+                    </p>
+                    <p>
+                        <label for="mail">Votre adresse mail :</label>
+                        <input type="email" name="mail" id="mail" placeholder="raul00@gmail.com" />
+                    </p>
+                    <p>
+                        <label for="phone">Téléphone :</label>
+                        <input type="tel" name="phone" id="phone" placeholder="07.12.34.56.78"/>
+                    </p>
+                    <p>
+                        <label for="pwd">Mot de passe :</label>
+                        <input type="password" value="" name="mot_de_passe" id="mot_de_passe" required/>
+                    </p>
+                    <p>
+                        <label for="pwd">Confirmation mot de passe :</label>
+                        <input type="password" value="" name="conf_mot_de_passe" id="conf_mot_de_passe" required/>
+                    </p>
+                    <p>
+                        <label for="logo">Votre logo :</label>
+                        <input type="file" name="logo" id="logo" placeholder="logo, photo ou avatar" />
+                    <p>
+                </p1>
+            </fieldset>
+
+            <div>
+                <fieldset style="border-color: blue;">
+                    <legend style="color: blue;font-size: x-large;">
+                        <strong>Merci de votre inscription !</strong>
+                    </legend>
+                    <p4>
+                        <button type="submit" class="button" style="background-color: blue;">
+                            <input type="submit" value="Valider">
+                        </button>
+                        <button2 type="reset" class="button">
+                                <input type="reset" value="Réinitialiser"
+                        </button>
+                    </p4>
+                </fieldset>
+            </div>
+
+        </form>
+
+
+        <section>
+            <div id="bas de page">
+                <div id="bas"><center><em>Page réalisé par Sidy Diallo le 11/05/2022</em></center></div>
+            </div>
+        </section>
+
+    </body>
+
+    <div id='textError'></div>
+            
+        <br/>
+
+        <script type="text/javascript">
+            console.log('Votre texte ici');
+            document.getElementById('myform').addEventListener("submit", valideForm);
+
+            function valideForm(evenement) {
+                evenement.preventDefault();
+                console.log('Le formulaire a été validé');
+
+                var mdp = document.getElementById('mot_de_passe').value;
+                var confmdp = document.getElementById('conf_mot_de_passe').value;
+
+                /*console.log('mot de passe = ' + mdp + ' confirmation = ' + confmdp);*/
+
+                if (mdp == confmdp) {
+                    console.log('<b>Les mots de passe sont égaux !</b>');
+                    document.getElementById('myform').submit();
+                }
+                else{
+                    console.log('Erreur de confirmation.');
+                    document.getElementById('textError').innerHTML = '<b>Les mots de passes ne sont pas identiques.</b>';
+                }
+            }
+        </script>
+
+</html>
